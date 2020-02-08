@@ -746,7 +746,7 @@ impl MainHandler {
         }
 
         if self.cache {
-            static SECONDS: u32 = 7 * 24 * 3600; // max-age: 7.days()
+            static SECONDS: u32 = 5 * 60;
             if let Some(&IfModifiedSince(HttpDate(ref if_modified_since))) = req.headers.get::<IfModifiedSince>() {
                 if modified <= if_modified_since.to_timespec() {
                     return Ok(Response::with(status::NotModified))
